@@ -3,16 +3,19 @@
         {
             "platform": "Instagram",
             "username": "f.george_",
+            "url": "https://www.instagram.com/?hl=en",
             "id": "0001"
         },
         {
             "platform": "Discord",
             "username": ".Ticoo",
+            "url": "NA",
             "id": "0002"
         },
         {
             "platform": "Email",
             "username": "JLRGeorge.Lo@gmail.com",
+            "url": "NA",
             "id": "0003"
         }
     ]

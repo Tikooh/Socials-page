@@ -30,6 +30,11 @@ h1 {
   gap: 10px;
 }
 
+.flex__container {
+  display: flex;
+  align-items: center;
+}
+
 .header__name {
   display: flex;
 
@@ -64,7 +69,8 @@ h1 {
 }
 
 .a__social_link {
-  display: flex;
+  margin: 0px;
+  padding: 0px;
 }
 
 .ul__social_list {
@@ -75,11 +81,17 @@ h1 {
 }
 
 .li__social_link {
+  display: flex;
   padding: 20px;
   margin-bottom: 20px;
   background-color: whitesmoke;
 }
 
+.img__social_img {
+  width: 30px;
+  margin-right: 10px;
+  height: auto;
+}
 
 @media (max-width: 767px) {
   /* for smartphones */

@@ -1,12 +1,27 @@
-import React from 'react'
 
-export const Social = () => {
+type SocialPropsType = {
+    platform: string;
+    username: string;
+    url: string;
+    id: string;
+}
+
+const Social = ({ platform, username, url, id }: SocialPropsType) => {
+
+
+    const img: string = new URL(`../images/${id}.png`, import.meta.url).href
 
     const content = (
         <>
-            <a href="" className="a__social_link">
-                <img src="" alt="" className="img__social_img" />
-            </a>
+            <li className="li__social_link">
+                
+                <a href={url}>
+                    <div className="flex__container">
+                        <img src={img} alt="" className="img__social_img" />
+                        <p className="a__social_link">{username}</p>
+                    </div>
+                </a>
+            </li>
         </>
     )
 
