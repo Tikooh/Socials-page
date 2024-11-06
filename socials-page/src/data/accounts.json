@@ -1,0 +1,19 @@
+{
+    "social_media_accounts": [
+        {
+            "platform": "Instagram",
+            "username": "f.george_",
+            "id": "0001"
+        },
+        {
+            "platform": "Discord",
+            "username": ".Ticoo",
+            "id": "0002"
+        },
+        {
+            "platform": "Email",
+            "username": "JLRGeorge.Lo@gmail.com",
+            "id": "0003"
+        }
+    ]
+}
