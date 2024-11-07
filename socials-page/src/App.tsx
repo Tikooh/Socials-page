@@ -3,7 +3,7 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import SocialsBox from './components/SocialsBox'
 import SpawnSlime from './components/SpawnSlime'
-import Sprite  from './components/Sprite'
+import Slime  from './components/Slime'
 
 const App = () => {
 
@@ -13,7 +13,7 @@ const App = () => {
         <SocialsBox></SocialsBox>
         <Header></Header>
         <Footer></Footer>
-        <Sprite></Sprite>
+        <Slime></Slime>
         <SpawnSlime></SpawnSlime>
       </div>
 
