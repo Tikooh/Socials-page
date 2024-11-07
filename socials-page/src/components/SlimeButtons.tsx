@@ -1,6 +1,7 @@
-// import { useSlime } from "../context/SlimeProvider"
 
-// const {REDUCER_ACTIONS} = useSlime()
+import { useSlime } from "../context/SlimeProvider"
+
+const { REDUCER_ACTIONS } = useSlime()
 
 type ActionButtonsProp = {
     OnActionSelect: (actionType: string) => void

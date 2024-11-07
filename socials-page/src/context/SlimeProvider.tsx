@@ -1,9 +1,10 @@
 import { createContext, ReactElement, useContext, useMemo, useReducer } from "react"
 
 type slime = {
-    top: number,
-    left: number,
+    x: number,
+    y: number,
     colour: string,
+    name: string,
 }
 
 type slimeContextType = {

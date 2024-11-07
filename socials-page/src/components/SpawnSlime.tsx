@@ -5,14 +5,22 @@ import SpriteBox from "./SpriteBox"
 
 const SpawnSlime = () => {
 
-    // const { dispatch, slime_list } = useSlime()
+    const { dispatch, slime_list } = useSlime()
 
     const [selectedAction, setSelectedAction] = useState("")
+
+    const HandleSubmit = () => {
+        dispatch({type: selectedAction, payload: { x: 0, y: 0, colour: "#ffffff", name: "bob"} })
+        console.log(slime_list)
+    }
 
     const content = (
 
         <>
-            <SlimeButtons OnActionSelect={(actionType) => setSelectedAction(actionType)}></SlimeButtons>
+            <form onSubmit={() => HandleSubmit()}>
+                <SlimeButtons OnActionSelect={(actionType) => setSelectedAction(actionType)}></SlimeButtons>
+            </form>
+
             <SpriteBox></SpriteBox>
 
 
