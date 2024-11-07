@@ -1,9 +1,9 @@
 import './App.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import RenderSlimes from './components/RenderSlimes'
 import SocialsBox from './components/SocialsBox'
 import SpawnSlime from './components/SpawnSlime'
-import Slime  from './components/Slime'
 
 const App = () => {
 
@@ -13,8 +13,8 @@ const App = () => {
         <SocialsBox></SocialsBox>
         <Header></Header>
         <Footer></Footer>
-        <Slime></Slime>
         <SpawnSlime></SpawnSlime>
+        <RenderSlimes></RenderSlimes>
       </div>
 
     </>

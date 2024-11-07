@@ -22,9 +22,6 @@ const SpawnSlime = () => {
             </form>
 
             <SpriteBox></SpriteBox>
-
-
-            
         </>
 
     )

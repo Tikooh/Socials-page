@@ -29,6 +29,8 @@ const RenderSlimes = () => {
         </div>
 
     )
+
+    return content
 }
 
 export default RenderSlimes
