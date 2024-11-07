@@ -17,6 +17,8 @@ const initial_slime_state = {
 export const REDUCER_ACTION_TYPE = {
     ADD: "ADD",
     EXPLODE: "EXPLODE",
+    COLOUR: "COLOUR",
+    NAME: "NAME"
 }
 
 type ReducerAction = {
@@ -45,6 +47,26 @@ const Reducer = (state: slimeContextType, action: ReducerAction): slimeContextTy
             if (!action.payload) {
                 throw new Error()
             }
+
+            return { ...state}
+        }
+
+        case REDUCER_ACTION_TYPE.COLOUR: {
+            if (!action.payload) {
+                throw new Error()
+            }
+
+            const { colour } = action.payload
+
+            return { ...state}
+        }
+
+        case REDUCER_ACTION_TYPE.NAME: {
+            if (!action.payload) {
+                throw new Error()
+            }
+
+            const { colour } = action.payload
 
             return { ...state}
         }
