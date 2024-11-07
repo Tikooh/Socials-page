@@ -1,13 +1,14 @@
 
 import { useSlime } from "../context/SlimeProvider"
 
-const { REDUCER_ACTIONS } = useSlime()
 
 type ActionButtonsProp = {
     OnActionSelect: (actionType: string) => void
 }
 
 const SlimeButtons = ({ OnActionSelect }: ActionButtonsProp) => {
+
+    const { REDUCER_ACTIONS } = useSlime() //this has to be inside the main function
 
     const content = (
         <>

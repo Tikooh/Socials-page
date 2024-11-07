@@ -10,7 +10,7 @@ const SpawnSlime = () => {
     const [selectedAction, setSelectedAction] = useState("")
 
     const HandleSubmit = () => {
-        dispatch({type: selectedAction, payload: { x: 0, y: 0, colour: "#ffffff", name: "bob"} })
+        dispatch({type: selectedAction, payload: { x: 0, y: 0, colour: "#ffffff", name: "bob", tag: Math.floor(Math.random() * 1_000_000)} })
         console.log(slime_list)
     }
 

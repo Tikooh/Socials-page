@@ -5,6 +5,7 @@ type slime = {
     y: number,
     colour: string,
     name: string,
+    tag: number,
 }
 
 type slimeContextType = {
@@ -34,14 +35,14 @@ const Reducer = (state: slimeContextType, action: ReducerAction): slimeContextTy
                 throw new Error()
             }
                 
-            const { top, left } = action.payload
+            const { x, y, colour, name, tag } = action.payload
 
             const getRandomColour = (): string => {
                 const randomColour = Math.floor(Math.random() * 0xffffff)
                 return `#${randomColour.toString(16).padStart(6, '0')}`
             }
 
-            return { ...state, slime_list: [...state.slime_list, { top, left, colour: getRandomColour()}]} 
+            return { ...state, slime_list: [...state.slime_list, { x: x, y: y, colour: getRandomColour(), name: name, tag: tag}]} 
         }
 
         case REDUCER_ACTION_TYPE.EXPLODE: {
@@ -49,7 +50,11 @@ const Reducer = (state: slimeContextType, action: ReducerAction): slimeContextTy
                 throw new Error()
             }
 
-            return { ...state}
+            const {tag} = action.payload
+
+            const filtered_slime_list = state.slime_list.filter(item => item.tag !== tag)
+
+            return { ...state, slime_list: [...filtered_slime_list]}
         }
 
         case REDUCER_ACTION_TYPE.COLOUR: {
