@@ -6,7 +6,7 @@ type SocialPropsType = {
     id: string;
 }
 
-const Social = ({ platform, username, url, id }: SocialPropsType) => {
+const Social = ({ username, url, id }: SocialPropsType) => {
 
 
     const img: string = new URL(`../images/${id}.png`, import.meta.url).href

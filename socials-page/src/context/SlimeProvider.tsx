@@ -1,4 +1,4 @@
-import { createContext, ReactElement, useMemo, useReducer } from "react"
+import { createContext, ReactElement, useContext, useMemo, useReducer } from "react"
 
 type slime = {
     top: number,
@@ -14,7 +14,7 @@ const initial_slime_state = {
     slime_list: []
 }
 
-const REDUCER_ACTION_TYPE = {
+export const REDUCER_ACTION_TYPE = {
     ADD: "ADD",
     EXPLODE: "EXPLODE",
 }
@@ -80,6 +80,11 @@ export const slimeContext = createContext<useSlimeContextType>(initial_slime_con
 type childrenType = {
     children?: ReactElement
 }
+
+export const useSlime = () => {
+    return useContext(slimeContext)
+}
+
 
 export const SlimeProvider = ({children}: childrenType): ReactElement => {
 

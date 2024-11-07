@@ -2,8 +2,9 @@ import './App.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import SocialsBox from './components/SocialsBox'
+import SpawnSlime from './components/SpawnSlime'
 import Sprite  from './components/Sprite'
-import SpriteBox from './components/SpriteBox'
+
 const App = () => {
 
   const content = (
@@ -12,8 +13,8 @@ const App = () => {
         <SocialsBox></SocialsBox>
         <Header></Header>
         <Footer></Footer>
-        <SpriteBox></SpriteBox>
         <Sprite></Sprite>
+        <SpawnSlime></SpawnSlime>
       </div>
 
     </>
