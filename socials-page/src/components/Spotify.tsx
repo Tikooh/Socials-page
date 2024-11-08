@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 type PlaylistTrack = {
     name: string,
-    artists: { name: string }[]
+    artist: string
 }
 
 type Spotify_playlist = {
@@ -11,13 +11,13 @@ type Spotify_playlist = {
     tracks: PlaylistTrack[]
 }
 
-const initial_playlist = {
+const initial_track = {
     name: '',
-    tracks: []
+    artist: '',
 }
 
 const Spotify = () => {
-    const [playlist, setPlaylist] = useState<Spotify_playlist>(initial_playlist)
+    const [song, setSong] = useState<PlaylistTrack>(initial_track)
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const Spotify = () => {
                         Authorization: `Bearer `
                     }
                 })
-                setPlaylist(response.data)
+                setSong(response.data)
                 setLoaded(true)
             }
 
@@ -48,17 +48,11 @@ const Spotify = () => {
         <>
         <div>
             <p>Currently Listening to:</p>
-            <ul>
-                {playlist.tracks.map(item => {
-                    console.log(item.name)
-                    return (
-                        <li>
-                            {item.name}
-                        </li>
-                    )
-
-                })}
-            </ul>
+            <iframe
+            src={`https://open.spotify.com/embed/playlist/1McZxRocZ3JYt1TWgEI9eM?utm_source=generator&theme=0`}>
+                
+                
+            </iframe>
         </div>
         </>
     )
