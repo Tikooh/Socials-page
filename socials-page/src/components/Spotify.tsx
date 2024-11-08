@@ -16,6 +16,23 @@ const initial_track = {
     artist: '',
 }
 
+const Refresh_Token = () => {
+
+    const [accessToken, setAccessToken] = useState<string>("")
+
+    useEffect(() => {
+        axios.post('http://localhost:5000/refresh_token')
+        .then(response => {
+            setAccessToken(response.data.access_token)
+        })
+        .catch(() => {
+            throw new Error()
+        })
+    }, [])
+
+    return accessToken
+
+}
 const Spotify = () => {
     const [song, setSong] = useState<PlaylistTrack>(initial_track)
     const [loaded, setLoaded] = useState(false)
@@ -23,9 +40,10 @@ const Spotify = () => {
     useEffect(() => {
         const getPlaylist = async() => {
             try {
-                const response = await axios.get(`https://api.spotify.com/v1/playlists/SX8MX6pk4YtxtF27py1bG`, {
+                const accessToken = Refresh_Token()
+                const response = await axios.get(`https://api.spotify.com/v1/me/player/currently-playing`, {
                     headers: {
-                        Authorization: `Bearer `
+                        Authorization: `Bearer ${accessToken}`
                     }
                 })
                 setSong(response.data)
@@ -42,14 +60,14 @@ const Spotify = () => {
 
     const content = loaded
     ?
-        <p>Loading Playlist</p>
+        <p>Loading Song</p>
 
     :   (
         <>
         <div>
             <p>Currently Listening to:</p>
             <iframe
-            src={`https://open.spotify.com/embed/playlist/1McZxRocZ3JYt1TWgEI9eM?utm_source=generator&theme=0`}>
+            src={`https://open.spotify.com/track/${song.name}`}>
                 
                 
             </iframe>

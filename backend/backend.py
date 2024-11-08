@@ -17,7 +17,10 @@ TOKEN_URL = "https://accounts.spotify.com/api/token"
 
 access_token = None
 
-def refresh_token(access_token):
+@app.route("/refresh_token", methods=["GET"])
+def refresh_token():
+
+    global access_token
 
     auth_header = base64.b64encode(f'{CLIENT_ID}:{CLIENT_SECRET}'.encode()).decode()
 
@@ -40,5 +43,5 @@ def refresh_token(access_token):
     else:
         print("failed to refresh access token")
 
-
-
+if __name__ == "__main__":
+    app.run(debug=True)
