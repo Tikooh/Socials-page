@@ -1,14 +1,17 @@
 from flask import Flask
+from dotenv import load_dotenv
 import requests
 import base64
 import os
 
 app = Flask(__name__)
 
-CLIENT_ID = ""
-CLIENT_SECRET = ""
+load_dotenv()
 
-REFRESH_TOKEN = ""
+CLIENT_ID = os.getenv("API_KEY")
+CLIENT_SECRET = os.getenv("API_SECRET")
+
+REFRESH_TOKEN = os.getenv("REFRESH_TOKEN")
 
 TOKEN_URL = "https://accounts.spotify.com/api/token"
 
