@@ -22,7 +22,6 @@ const SpawnSlime = () => {
 
     const HandleSubmit = () => {
         dispatch({type: selectedAction.actionType, payload: selectedAction.payload})
-        console.log(slime_list)
     }
 
     const content = (

@@ -32,6 +32,7 @@ const Slime = ({ name, colour, tag }: slime) => {
                 <img src={img} alt="slime" className="img__slime"
                     style={{
                         position: 'absolute',
+                        background: colour,
                     }}
                 />
             </div>
