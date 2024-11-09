@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { useSlime } from "../context/SlimeProvider"
-import SlimeButtons from "./SlimeButtons"
-import SpriteBox from "./SpriteBox"
-import { slime } from "../context/SlimeProvider"
+import { useSlime } from "./SlimeProvider"
+import SlimeButtons from "../components/SlimeButtons"
+import SpriteBox from "../components/SpriteBox"
+import { slime } from "./SlimeProvider"
 
 const SpawnSlime = () => {
 

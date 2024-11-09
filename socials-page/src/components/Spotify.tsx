@@ -40,11 +40,7 @@ const Spotify = () => {
     const accessToken = useAccessToken()
 
     useEffect(() => {
-
-        if (!accessToken) {
-            return
-        }
-
+        
         const getPlaylist = async() => {
             try {
                 const response = await axios.get(`https://api.spotify.com/v1/me/player/currently-playing`, {
@@ -62,16 +58,13 @@ const Spotify = () => {
                 }
 
                 if (!track.item.name) {
-                    setLoaded(false)
                     return
                 }
                 else {
                     setSong(track)
                     setLoaded(true)
                 }
-
             }
-
             catch (error) {
                 throw new Error()
             }
