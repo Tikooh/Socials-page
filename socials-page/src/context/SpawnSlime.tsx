@@ -16,7 +16,7 @@ const SpawnSlime = () => {
         payload: {x: 0, y: 0, colour: '', name: '', tag: 0}
     }
 
-    const { dispatch, slime_list } = useSlime()
+    const { dispatch } = useSlime()
 
     const [selectedAction, setSelectedAction] = useState<Action>(initial_selected_action)
 
@@ -27,7 +27,7 @@ const SpawnSlime = () => {
     const content = (
 
         <>
-            <form onSubmit={() => HandleSubmit()}>
+            <form onSubmit={() => HandleSubmit()} className="form__slime_buttons">
                 <SlimeButtons OnActionSelect={(actionType, payload) => setSelectedAction({ actionType, payload })}></SlimeButtons>
             </form>
 

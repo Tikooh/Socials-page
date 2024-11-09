@@ -18,12 +18,12 @@ const SlimeButtons = ({ OnActionSelect }: ActionButtonsProp) => {
     }, [colour])
     const content = (
         <>
-            <div className="div__slime_buttons">
+            <div>
                 <label className="label__slime">Slimes</label>
                 <button className="button__slime" onClick={() => OnActionSelect(REDUCER_ACTIONS.ADD, { x: 0, y: 0, colour: colour, name: "bob", tag: Math.floor(Math.random() * 1_000_000)})}>Spawn</button>
                 <button className="button__slime" onClick={() => OnActionSelect(REDUCER_ACTIONS.EXPLODE, {x: 0, y: 0, colour: '', name: 'bob', tag: slime_list[Math.floor(Math.random()*slime_list.length)].tag})}>Destroy</button>
-                <input type="text"></input>
-                <input type="color" value={colour} onChange={(e) => setColour(e.target.value)}></input>
+                <input type="text" className="input__text"></input>
+                <input type="color" value={colour} onChange={(e) => setColour(e.target.value)} className="input__colour"></input>
             
             </div>
         </>

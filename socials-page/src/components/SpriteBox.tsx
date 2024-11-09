@@ -3,6 +3,7 @@ const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     const yPos = e.clientY
 
     console.log(xPos)
+    console.log(yPos)
 }
 
 const SpriteBox = () => {

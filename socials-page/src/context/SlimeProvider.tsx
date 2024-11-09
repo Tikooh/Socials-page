@@ -39,10 +39,11 @@ const Reducer = (state: slimeContextType, action: ReducerAction): slimeContextTy
 
             console.log(colour)
 
-            const getRandomColour = (): string => {
-                const randomColour = Math.floor(Math.random() * 0xffffff)
-                return `#${randomColour.toString(16).padStart(6, '0')}`
-            }
+            // const getRandomColour = (): string => {
+            //     const randomColour = Math.floor(Math.random() * 0xffffff)
+            //     return `#${randomColour.toString(16).padStart(6, '0')}`
+            // }
+            
             console.log(state.slime_list)
             return { ...state, slime_list: [...state.slime_list, { x: x, y: y, colour: colour, name: name, tag: tag}]} 
         }

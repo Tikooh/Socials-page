@@ -77,9 +77,9 @@ const Spotify = () => {
     ?
         (
             <>
-            <div>
+            <div className="div__song">
                 <p>Currently Listening to:</p>
-                <iframe
+                <iframe className="iframe__spotify"
                 src={`https://open.spotify.com/embed/track/${song.item.id}`}
                 >
                 </iframe>    

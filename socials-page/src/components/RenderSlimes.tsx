@@ -14,7 +14,7 @@ const RenderSlimes = () => {
 
     const content = (
 
-        <div>
+        <div className="div__slime_spawn_point">
             {slime_list.map(slime => {
                 return (
                     <Slime
