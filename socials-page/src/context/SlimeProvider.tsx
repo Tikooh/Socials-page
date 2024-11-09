@@ -1,6 +1,6 @@
 import { createContext, ReactElement, useContext, useMemo, useReducer } from "react"
 
-type slime = {
+export type slime = {
     x: number,
     y: number,
     colour: string,
