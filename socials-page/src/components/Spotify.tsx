@@ -4,18 +4,14 @@ import { useEffect, useState } from 'react'
 type PlaylistTrack = {
     item: {
         name: string,
-        external_urls: {
-            spotify: string,
-        }
+        id: string,
     }
 }
 
 const initial_track = {
     item: {
         name: '',
-        external_urls: {
-            spotify: '',
-        }
+        id: '',
     }
 }
 
@@ -32,11 +28,6 @@ const useAccessToken = () => {
             throw new Error()
         })
     }, [])
-
-
-    // useEffect(() => {
-    //     console.log(accessToken)
-    // }, [accessToken])
 
     return accessToken
 
@@ -66,14 +57,11 @@ const Spotify = () => {
                 const track: PlaylistTrack = {
                     item: {
                         name: response.data.item.name,
-                        external_urls: {
-                            spotify: response.data.item.external_urls.spotify
-                        }
+                        id: response.data.item.id
                     }
                 }
 
                 if (!track.item.name) {
-                    console.log("no song found")
                     setLoaded(false)
                     return
                 }
@@ -91,14 +79,6 @@ const Spotify = () => {
         getPlaylist()
         
     }, [accessToken])
-
-    useEffect(() => {
-        console.log(song)
-    }, [song])
-
-    useEffect(() => {
-        console.log(loaded)
-    }, [loaded])
     
     const content = loaded
     ?
@@ -107,16 +87,15 @@ const Spotify = () => {
             <div>
                 <p>Currently Listening to:</p>
                 <iframe
-                src={`https://open.spotify.com/track/${song.item.external_urls.spotify}`}
+                src={`https://open.spotify.com/embed/track/${song.item.id}`}
                 >
                 </iframe>    
-                
-
+            
             </div>
             </>
         ) 
 
-    :    <p>loading</p> 
+    :    <p>No song currently playing</p> 
     
     return content
 }
