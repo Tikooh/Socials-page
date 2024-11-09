@@ -2,21 +2,24 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 type PlaylistTrack = {
-    name: string,
-    artist: string
-}
-
-type Spotify_playlist = {
-    name: string,
-    tracks: PlaylistTrack[]
+    item: {
+        name: string,
+        external_urls: {
+            spotify: string,
+        }
+    }
 }
 
 const initial_track = {
-    name: '',
-    artist: '',
+    item: {
+        name: '',
+        external_urls: {
+            spotify: '',
+        }
+    }
 }
 
-const Refresh_Token = () => {
+const useAccessToken = () => {
 
     const [accessToken, setAccessToken] = useState<string>("")
 
@@ -30,24 +33,55 @@ const Refresh_Token = () => {
         })
     }, [])
 
+
+    // useEffect(() => {
+    //     console.log(accessToken)
+    // }, [accessToken])
+
     return accessToken
 
 }
+
 const Spotify = () => {
     const [song, setSong] = useState<PlaylistTrack>(initial_track)
     const [loaded, setLoaded] = useState(false)
 
+    const accessToken = useAccessToken()
+
     useEffect(() => {
+
+        if (!accessToken) {
+            return
+        }
+
         const getPlaylist = async() => {
             try {
-                const accessToken = Refresh_Token()
                 const response = await axios.get(`https://api.spotify.com/v1/me/player/currently-playing`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`
                     }
+                
                 })
-                setSong(response.data)
-                setLoaded(true)
+
+                const track: PlaylistTrack = {
+                    item: {
+                        name: response.data.item.name,
+                        external_urls: {
+                            spotify: response.data.item.external_urls.spotify
+                        }
+                    }
+                }
+
+                if (!track.item.name) {
+                    console.log("no song found")
+                    setLoaded(false)
+                    return
+                }
+                else {
+                    setSong(track)
+                    setLoaded(true)
+                }
+
             }
 
             catch (error) {
@@ -56,24 +90,34 @@ const Spotify = () => {
         }
         getPlaylist()
         
-    }, [])
+    }, [accessToken])
 
+    useEffect(() => {
+        console.log(song)
+    }, [song])
+
+    useEffect(() => {
+        console.log(loaded)
+    }, [loaded])
+    
     const content = loaded
     ?
-        <p>Loading Song</p>
+        (
+            <>
+            <div>
+                <p>Currently Listening to:</p>
+                <iframe
+                src={`https://open.spotify.com/track/${song.item.external_urls.spotify}`}
+                >
+                </iframe>    
+                
 
-    :   (
-        <>
-        <div>
-            <p>Currently Listening to:</p>
-            <iframe
-            src={`https://open.spotify.com/track/${song.name}`}>
-                
-                
-            </iframe>
-        </div>
-        </>
-    )
+            </div>
+            </>
+        ) 
+
+    :    <p>loading</p> 
+    
     return content
 }
 

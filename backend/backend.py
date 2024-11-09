@@ -1,10 +1,12 @@
-from flask import Flask
+from flask import Flask, jsonify
 from dotenv import load_dotenv
+from flask_cors import CORS
 import requests
 import base64
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 load_dotenv()
 
@@ -17,7 +19,7 @@ TOKEN_URL = "https://accounts.spotify.com/api/token"
 
 access_token = None
 
-@app.route("/refresh_token", methods=["GET"])
+@app.route("/refresh_token", methods=["POST"])
 def refresh_token():
 
     global access_token
@@ -38,7 +40,7 @@ def refresh_token():
     if response.status_code == 200:
         new_data = response.json()
         access_token = new_data["access_token"]
-        return access_token
+        return jsonify({"access_token": access_token})
     
     else:
         print("failed to refresh access token")
