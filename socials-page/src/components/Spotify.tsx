@@ -88,7 +88,7 @@ const Spotify = () => {
             </>
         ) 
 
-    :    <p>No song currently playing</p> 
+    :    <p className="div__song">No song currently playing</p> 
     
     return content
 }
