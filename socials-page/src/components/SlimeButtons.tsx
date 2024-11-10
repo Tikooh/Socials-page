@@ -15,32 +15,20 @@ const SlimeButtons = ({ OnActionSelect }: ActionButtonsProp) => {
 
     const [name, setName] = useState("")
 
-    const [saved, setSaved] = useState(false)
 
-    const handleSave = () => {
-        OnActionSelect(REDUCER_ACTIONS.SAVE, {x: 0, y: 0, colour: colour, name: name, tag: Math.floor(Math.random() * 1_000_000_000)})
-        setSaved(true)
-    }
-    
-    const content = saved
-
-    ?
+    const content = (
         <>
-            <p>Thank you for saving!</p>
+            <div>
+                <label className="label__slime">Slimes</label>
+                <button className="button__slime" onClick={() => OnActionSelect(REDUCER_ACTIONS.ADD, { x: 0, y: 0, colour: colour, name: name, tag: Math.floor(Math.random() * 1_000_000_000)})}>Spawn</button>
+                <button className="button__slime" onClick={() => OnActionSelect(REDUCER_ACTIONS.EXPLODE, {x: 0, y: 0, colour: '', name: name, tag: slime_list[Math.floor(Math.random()*slime_list.length)].tag})}>Destroy</button>
+                <button className="button__slime" onClick={() => OnActionSelect(REDUCER_ACTIONS.SAVE, {x: 0, y: 0, colour: colour, name: name, tag: Math.floor(Math.random() * 1_000_000_000)})}>Save</button>
+                <input type="text" className="input__text" onChange={(e) => setName(e.target.value)}></input>
+                <input type="color" value={colour} onChange={(e) => setColour(e.target.value)} className="input__colour"></input>
+            
+            </div>
         </>
-
-    :
-        <>
-        <div>
-            <label className="label__slime">Slimes</label>
-            <button className="button__slime" onClick={() => OnActionSelect(REDUCER_ACTIONS.ADD, { x: 0, y: 0, colour: colour, name: name, tag: Math.floor(Math.random() * 1_000_000_000)})}>Spawn</button>
-            <button className="button__slime" onClick={() => OnActionSelect(REDUCER_ACTIONS.EXPLODE, {x: 0, y: 0, colour: '', name: name, tag: slime_list[Math.floor(Math.random()*slime_list.length)].tag})}>Destroy</button>
-            <button className="button__slime" onClick={() => handleSave()}>Save</button>
-            <input type="text" className="input__text" onChange={(e) => setName(e.target.value)}></input>
-            <input type="color" value={colour} onChange={(e) => setColour(e.target.value)} className="input__colour"></input>
-        </div>
-        </>
-
+    )
 
     return content
 }
