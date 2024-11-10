@@ -3,9 +3,23 @@
         {
             "x": 100,
             "y": 200,
-            "colour": "#ffffff",
-            "name": "Test",
+            "colour": "#ffff00",
+            "name": "Bob",
             "tag": 1
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "colour": "#ff5c5c",
+            "name": "Leon",
+            "tag": 69448
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "colour": "#6bff9c",
+            "name": "George",
+            "tag": 673073
         }
     ]
 }

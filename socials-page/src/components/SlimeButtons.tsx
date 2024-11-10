@@ -18,7 +18,11 @@ const SlimeButtons = ({ OnActionSelect }: ActionButtonsProp) => {
 
     const addSlime = async (newSlime: slime) => {
         try {
-            const response = await axios.post('http://localhost:5000/slimes', newSlime)
+            const response = await axios.post('http://localhost:5000/slimes', newSlime, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
             console.log(response.data)
 
         }

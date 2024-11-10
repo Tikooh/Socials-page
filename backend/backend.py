@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from dotenv import load_dotenv
 from flask_cors import CORS
 import requests
@@ -54,11 +54,11 @@ def read_json_file():
 
 @app.route("/slimes", methods=["GET"])
 def get_slimes():
-    return jsonify(read_json_file)
+    return jsonify(read_json_file())
 
 @app.route("/slimes", methods=["POST"])
 def post_slimes():
-    new_slime = requests.json
+    new_slime = request.json
 
     data = read_json_file()
 
@@ -67,8 +67,8 @@ def post_slimes():
     with open("/home/george/Socials-page/socials-page/src/data/visitorSlimes.json", 'w') as file:
         json.dump(data, file, indent=4)
 
-    print(read_json_file)
-    return jsonify({"successfully added a slime", new_slime})
+    print(data)
+    return jsonify("successfully added a slime")
 
 if __name__ == "__main__":
     app.run(debug=True)
