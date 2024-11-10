@@ -20,14 +20,15 @@ const SpawnSlime = () => {
 
     const [selectedAction, setSelectedAction] = useState<Action>(initial_selected_action)
 
-    const HandleSubmit = () => {
+    const HandleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
         dispatch({type: selectedAction.actionType, payload: selectedAction.payload})
     }
 
     const content = (
 
         <>
-            <form onSubmit={() => HandleSubmit()} className="form__slime_buttons">
+            <form onSubmit={(e) => HandleSubmit(e)} className="form__slime_buttons">
                 <SlimeButtons OnActionSelect={(actionType, payload) => setSelectedAction({ actionType, payload })}></SlimeButtons>
             </form>
 

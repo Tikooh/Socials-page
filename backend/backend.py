@@ -67,8 +67,16 @@ def post_slimes():
     with open("/home/george/Socials-page/socials-page/src/data/visitorSlimes.json", 'w') as file:
         json.dump(data, file, indent=4)
 
-    print(data)
     return jsonify("successfully added a slime")
+
+
+@app.route("/lenSlimes", methods=["GET"])
+def get_unique_entries():
+    data = read_json_file()
+
+    count = len(data["visitor_slimes"])
+
+    return jsonify({"count": count})
 
 if __name__ == "__main__":
     app.run(debug=True)

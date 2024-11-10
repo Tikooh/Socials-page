@@ -20,6 +20,48 @@
             "colour": "#6bff9c",
             "name": "George",
             "tag": 673073
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "colour": "#e66bff",
+            "name": "Harry",
+            "tag": 734572
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "colour": "#92ff38",
+            "name": "Paco",
+            "tag": 254742
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "colour": "",
+            "name": "",
+            "tag": 748495
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "name": "Joe",
+            "colour": "#ff2eb2",
+            "tag": 514105091
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "name": "dan",
+            "colour": "#4da3ff",
+            "tag": 160869446
+        },
+        {
+            "x": 0,
+            "y": 0,
+            "name": "dsad",
+            "colour": "",
+            "tag": 11268506
         }
     ]
 }

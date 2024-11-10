@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { slime } from "./RenderSlimes"
+import { slime } from "../context/SlimeProvider"
 
 
 const Slime = ({ name, colour }: slime) => {
@@ -12,7 +12,7 @@ const Slime = ({ name, colour }: slime) => {
     useEffect(() => {
         const interval = setInterval(() => {
             setPosition((prev) => (prev + 1) % surfaceWidth)
-        }, 75)
+        }, 50)
 
         return () => clearInterval(interval)
     },[])

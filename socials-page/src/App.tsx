@@ -5,6 +5,7 @@ import RenderSlimes from './components/RenderSlimes'
 import SocialsBox from './components/SocialsBox'
 import SpawnSlime from './context/SpawnSlime'
 import Spotify from './components/Spotify'
+import UniqueSlimes from './components/UniqueSlimes'
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
         <Footer></Footer>
         <SpawnSlime></SpawnSlime>
         <RenderSlimes></RenderSlimes>
+        <UniqueSlimes></UniqueSlimes>
         <Spotify></Spotify>
       </div>
 

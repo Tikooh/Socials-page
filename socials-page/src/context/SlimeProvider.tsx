@@ -1,3 +1,4 @@
+import axios from "axios"
 import { createContext, ReactElement, useContext, useMemo, useReducer } from "react"
 
 export type slime = {
@@ -19,8 +20,7 @@ const initial_slime_state = {
 export const REDUCER_ACTION_TYPE = {
     ADD: "ADD",
     EXPLODE: "EXPLODE",
-    COLOUR: "COLOUR",
-    NAME: "NAME"
+    SAVE: "SAVE"
 }
 
 type ReducerAction = {
@@ -52,24 +52,40 @@ const Reducer = (state: slimeContextType, action: ReducerAction): slimeContextTy
             return { ...state, slime_list: [...filtered_slime_list]}
         }
 
-        case REDUCER_ACTION_TYPE.COLOUR: {
+        case REDUCER_ACTION_TYPE.SAVE: {
+
             if (!action.payload) {
                 throw new Error()
             }
 
-            const { colour } = action.payload
-
-            return { ...state}
-        }
-
-        case REDUCER_ACTION_TYPE.NAME: {
-            if (!action.payload) {
-                throw new Error()
+            const { x, y, name, colour, tag} = action.payload
+            
+            const newSlime = {
+                x: x,
+                y: y,
+                name: name,
+                colour: colour,
+                tag: tag,
             }
 
-            const { colour } = action.payload
+            const addSlime = async (newSlime: slime) => {
+                try {
+                    const response = await axios.post('http://localhost:5000/slimes', newSlime, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    console.log(response.data)
+        
+                }
+                catch {
+                    throw new Error()
+                }
+            }
 
-            return { ...state}
+            addSlime(newSlime)
+
+            return {...state}
         }
 
         default: {

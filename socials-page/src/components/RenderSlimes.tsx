@@ -14,7 +14,6 @@ const RenderSlimes = () => {
         const response = await axios.get('http://localhost:5000/slimes')
 
         const slime_data: typeof slime_list = response.data.visitor_slimes
-        // console.log(response.data.visitor_slimes)
         return slime_data
     }
 
@@ -31,15 +30,13 @@ const RenderSlimes = () => {
 
         const intervalId = setInterval(() => {
 
-            console.log(slimes)
             const random_slime_index = Math.floor(Math.random() * slimes.length)
 
             const random_slime = slimes[random_slime_index]
             
-            console.log(random_slime)
             dispatch({ type: REDUCER_ACTIONS.ADD, payload: random_slime })
 
-        }, 10000)
+        }, 3000)
 
         return () => clearInterval(intervalId)
     }, [slimes])
