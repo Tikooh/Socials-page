@@ -47,12 +47,28 @@ def refresh_token():
     else:
         print("failed to refresh access token")
 
-@app.route("/slimes", methods=["GET"])
-def get_slimes():
+def read_json_file():
     with open("/home/george/Socials-page/socials-page/src/data/visitorSlimes.json", 'r') as file:
         contents = json.load(file)
+        return contents
 
-    return jsonify(contents)
+@app.route("/slimes", methods=["GET"])
+def get_slimes():
+    return jsonify(read_json_file)
+
+@app.route("/slimes", methods=["POST"])
+def post_slimes():
+    new_slime = requests.json
+
+    data = read_json_file()
+
+    data["visitor_slimes"].append(new_slime)
+
+    with open("/home/george/Socials-page/socials-page/src/data/visitorSlimes.json", 'w') as file:
+        json.dump(data, file, indent=4)
+
+    print(read_json_file)
+    return jsonify({"successfully added a slime", new_slime})
 
 if __name__ == "__main__":
     app.run(debug=True)
