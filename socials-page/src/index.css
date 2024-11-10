@@ -2,7 +2,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  /* background-image: url(/home/george/Socials-page/socials-page/src/images/pixel art.jpg); */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -85,6 +84,7 @@ h1 {
   padding: 20px;
   margin-bottom: 20px;
   background-color: whitesmoke;
+  border-radius: 5px;
 }
 
 .img__social_img {

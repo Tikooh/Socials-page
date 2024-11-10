@@ -1,0 +1,11 @@
+{
+    "visitor_slimes": [
+        {
+            "x": 100,
+            "y": 200,
+            "colour": "#ffffff",
+            "name": "Test",
+            "tag": 1
+        }
+    ]
+}
