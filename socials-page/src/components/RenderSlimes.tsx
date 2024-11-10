@@ -30,11 +30,20 @@ const RenderSlimes = () => {
 
         const intervalId = setInterval(() => {
 
-            const random_slime_index = Math.floor(Math.random() * slimes.length)
+            if (slimes.length !== 0) {
+                const random_slime_index = Math.floor(Math.random() * slimes.length)
 
-            const random_slime = slimes[random_slime_index]
-            
-            dispatch({ type: REDUCER_ACTIONS.ADD, payload: random_slime })
+                const random_slime = slimes[random_slime_index]
+                
+                dispatch({ type: REDUCER_ACTIONS.ADD, payload: random_slime })
+    
+                setSlimes(slimes.filter(slime => slime.tag !== random_slime.tag))
+            }
+            else
+            {
+                clearInterval(intervalId)
+            }
+
 
         }, 3000)
 
